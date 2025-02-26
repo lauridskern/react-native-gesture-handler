@@ -142,7 +142,7 @@ export interface SwipeableProps
    */
   onSwipeableWillClose?: (
     direction: SwipeDirection.LEFT | SwipeDirection.RIGHT,
-    progress: number
+    progress: SharedValue<number>
   ) => void;
 
   /**
@@ -347,15 +347,15 @@ const Swipeable = forwardRef<SwipeableMethods, SwipeableProps>(
         } else if (onSwipeableWillClose) {
           runOnJS(onSwipeableWillClose)(
             fromValue > 0 ? SwipeDirection.LEFT : SwipeDirection.RIGHT,
-            fromValue > 0 ? showLeftProgress.value : showRightProgress.value
+            fromValue > 0 ? showRightProgress : showLeftProgress
           );
         }
       },
       [
         onSwipeableWillClose,
         onSwipeableWillOpen,
-        showLeftProgress.value,
-        showRightProgress.value,
+        showLeftProgress,
+        showRightProgress,
       ]
     );
 

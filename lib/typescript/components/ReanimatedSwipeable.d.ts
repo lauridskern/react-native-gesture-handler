@@ -78,7 +78,7 @@ export interface SwipeableProps extends Pick<PanGestureHandlerProps, SwipeableEx
     /**
      * Called when action panel starts animating on close.
      */
-    onSwipeableWillClose?: (direction: SwipeDirection.LEFT | SwipeDirection.RIGHT, progress: number) => void;
+    onSwipeableWillClose?: (direction: SwipeDirection.LEFT | SwipeDirection.RIGHT, progress: SharedValue<number>) => void;
     /**
      * Called when action panel starts being shown on dragging to open.
      */
