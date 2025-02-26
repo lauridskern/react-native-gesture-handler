@@ -351,7 +351,12 @@ const Swipeable = forwardRef<SwipeableMethods, SwipeableProps>(
           );
         }
       },
-      [onSwipeableWillClose, onSwipeableWillOpen]
+      [
+        onSwipeableWillClose,
+        onSwipeableWillOpen,
+        showLeftProgress,
+        showRightProgress,
+      ]
     );
 
     const dispatchEndEvents = useCallback(
