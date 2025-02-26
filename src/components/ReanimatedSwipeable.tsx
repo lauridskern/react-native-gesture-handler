@@ -141,7 +141,8 @@ export interface SwipeableProps
    * Called when action panel starts animating on close.
    */
   onSwipeableWillClose?: (
-    direction: SwipeDirection.LEFT | SwipeDirection.RIGHT
+    direction: SwipeDirection.LEFT | SwipeDirection.RIGHT,
+    progress: SharedValue<number>
   ) => void;
 
   /**
@@ -345,7 +346,8 @@ const Swipeable = forwardRef<SwipeableMethods, SwipeableProps>(
           runOnJS(onSwipeableWillOpen)(SwipeDirection.LEFT);
         } else if (onSwipeableWillClose) {
           runOnJS(onSwipeableWillClose)(
-            fromValue > 0 ? SwipeDirection.LEFT : SwipeDirection.RIGHT
+            fromValue > 0 ? SwipeDirection.LEFT : SwipeDirection.RIGHT,
+            fromValue > 0 ? showLeftProgress : showRightProgress
           );
         }
       },
